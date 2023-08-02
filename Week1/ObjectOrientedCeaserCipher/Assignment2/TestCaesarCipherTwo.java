@@ -72,9 +72,10 @@ public class TestCaesarCipherTwo {
     }
     
     public void simpleTests() {
-        FileResource fr = new FileResource();
-        String message = fr.asString();
-        CaesarCipherTwo cc = new CaesarCipherTwo(17, 3);
+        //ileResource fr = new FileResource();
+        //String message = fr.asString();
+        String message = "Can you imagine life WITHOUT the internet AND computers in your pocket?";
+        CaesarCipherTwo cc = new CaesarCipherTwo(21, 8);
         
         String encrypted = cc.encrypt(message);
         System.out.println("Encryption");

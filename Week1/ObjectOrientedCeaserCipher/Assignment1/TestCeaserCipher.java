@@ -2,7 +2,7 @@
 /**
  * Write a description of class TestCeaserCipher here.
  *
- * @author (your name)
+ * @author (Alivia Guin)
  * @version (a version number or a date)
  */
 import edu.duke.*;
@@ -44,15 +44,16 @@ public class TestCeaserCipher {
         }
         
         CeaserCipher cc = new CeaserCipher(dkey);
-		
+        
         return cc.decrypt(input);
     }
     
     public void simpleTests() {
-        FileResource fr = new FileResource();
-        String message = fr.asString();
-        CeaserCipher cc = new CeaserCipher(18);
-		
+        //FileResource fr = new FileResource();
+        //String message = fr.asString();
+        String message = "Can you imagine life WITHOUT the internet AND computers in your pocket?";
+        CeaserCipher cc = new CeaserCipher(15);
+        
         String encrypted = cc.encrypt(message);
         System.out.println("Encryption");
         System.out.println("==========");
