@@ -135,6 +135,19 @@ public class LogAnalyzer
         }
         return dayOfIPs;
     }
+    
+    public String dayWithMostIPVisits(HashMap<String, ArrayList<String>> daysForIp) {
+        String maxIpsDay = "";
+        int maxCountIps = Integer.MIN_VALUE;
+        for (String day : daysForIp.keySet()) {
+            int currDayIpCount = daysForIp.get(day).size();
+            if (currDayIpCount > maxCountIps) {
+                maxIpsDay = day;
+                maxCountIps = currDayIpCount;
+            }
+        }
+        return maxIpsDay; 
+    }
         
      public void printAll() {
          for (LogEntry le : records) {
