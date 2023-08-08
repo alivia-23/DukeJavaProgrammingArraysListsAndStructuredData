@@ -87,7 +87,9 @@ public class WordsInFiles
        //}
        System.out.println(sample.size());
        
-       printFilesIn("tree"); //should print brief1.txt, 3, 4
-       //printFilesIn("dogs"); //should print brief2.txt, 3
+       //printFilesIn("sad"); //should print brief1.txt, 3, 4
+       //printFilesIn("red");
+       //printFilesIn("sea");//should print brief2.txt, 3
+       printFilesIn("tree"); 
     }
 }
