@@ -2,7 +2,7 @@
 /**
  * Write a description of class Tester here.
  * 
- * @author (your name) 
+ * @author (Alivia Guin) 
  * @version (a version number or a date)
  */
 

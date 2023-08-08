@@ -24,4 +24,40 @@ public class Tester
         la.readFile("short-test_log");
         la.printAll();
     }
+    
+    public void testUniqueIP() {
+        LogAnalyzer la = new LogAnalyzer();
+        la.readFile("short-test_log");
+        int uniqueIPs = la.countUniqueIPs();
+        System.out.println("There are " +uniqueIPs + "IPs");
+    }
+    
+    public void testLogHigherThanNum() {
+        LogAnalyzer la = new LogAnalyzer();
+        //la.readFile("short-test_log");
+        la.readFile("weblog1_log");
+        la.printAllHigherThanNum(400);
+    }
+    
+    public void testUniqueIPVisitsOnDay() {
+        LogAnalyzer la = new LogAnalyzer();
+        //la.readFile("weblog-short_log");
+        la.readFile("weblog1_log");
+        //int count1 = la.uniqueIPVisitsOnDay("Sep 14").size();
+        //int count2 = la.uniqueIPVisitsOnDay("Sep 30").size();
+        int count3 = la.uniqueIPVisitsOnDay("Mar 24").size();
+        //System.out.println("Number of unique IPs on Sep 14 " +count1);
+        //System.out.println("Number of unique IPs on Sep 30 " +count2);
+        System.out.println("Number of unique IPs on Mar 24 " +count3);
+    }
+    
+    public void testCountUniqueIPsInRange() {
+        LogAnalyzer la = new LogAnalyzer();
+        //la.readFile("short-test_log");
+        la.readFile("weblog1_log");
+        //int count1 = la.countUniqueIPsInRange(200,299);
+        int count2 = la.countUniqueIPsInRange(300,399);
+        //System.out.println("Number of unique IPs in the range 200 and 299 " +count1);
+        System.out.println("Number of unique IPs in the range 300 and 399 " +count2);
+    }
 }
