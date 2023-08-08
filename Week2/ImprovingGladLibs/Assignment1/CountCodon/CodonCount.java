@@ -2,67 +2,98 @@
 /**
  * Write a description of class CodonCount here.
  *
- * @author (your name)
+ * @author (Alivia Guin)
  * @version (a version number or a date)
  */
 import edu.duke.*;
 import java.util.*;
+import java.io.*;
 
 public class CodonCount
 {
-    private HashMap<String, Integer> counts;
-
-    public CodonCount() {
-        counts = new HashMap<String, Integer>();
-    }
-    public void buildCodonMap(int start, String dna) {
-        dna = dna.toUpperCase();
-        for(int i = start; i < dna.length(); i+=3) {
-            if(!(i + 3 >= dna.length())) {
-                String codon = dna.substring(i, i+3);
-                if(!counts.containsKey(codon)) {
-                    counts.put(codon, 1);
-                } else {
-                    counts.put(codon, counts.get(codon) + 1);
-                }
-            }
-        }
+    private int frame,start,end;
+    private HashMap<String,Integer> codonCount;
+    
+    public CodonCount()
+    {
+        codonCount = new HashMap<String,Integer>();
+        frame = 0;
+        start = 1;
+        end = 7;
     }
     
-    public String getMostCommonCodon() {
-        int largest = 0;
-        String largestCodon = "";
-        for(String codon : counts.keySet()) {
-            int currentCount = counts.get(codon);
-            if(currentCount > largest) {
-                largest = currentCount;
-                largestCodon = codon;
+    public void buildCodonMap(int start, String dna)
+    {
+        codonCount.clear();
+        dna = dna.trim();
+        //System.out.println(dna.substring(start));
+        for(int i = start;(i+2) < dna.length();i = i+3)
+        {
+            String sub=dna.substring(i,i+3);
+            //System.out.println(i+" "+sub);
+            if(codonCount.containsKey(sub))
+            {
+                codonCount.put(sub,codonCount.get(sub)+1);
             }
-        }
-        return largestCodon;
+            else
+            {
+                codonCount.put(sub,1);
+            }
+        }     
     }
     
-    void printCodonCounts(int start, int end) {
-        for(String codon : counts.keySet()) {
-            int count = counts.get(codon);
-            if(count >= start && count <= end) {
-                System.out.println(codon + "\t" + count);
+    public String getMostCommonCodon()
+    {
+        int max = -1;
+        String codon = "";
+        for (String s : codonCount.keySet())
+        {
+            int i = codonCount.get(s);
+            if(max < i)
+            {
+                max = i;
+                codon = s;
             }
         }
-        System.out.println("Unique Codons: " + counts.size());
+        return codon;
     }
     
-    void tester() {
+    public void printCodonCounts(int start, int end)
+    {
+        System.out.println("Reading frame "+frame+".......");
+        System.out.println("Number of unique codons: "+codonCount.size());
+        String codon = getMostCommonCodon();
+        System.out.println("Most common codon is: "+codon+" and the count is: "+codonCount.get(codon));
+        System.out.println("Counts of codon between "+start+" and "+end+": ");
+        for (String s : codonCount.keySet())
+        {
+            int i = codonCount.get(s);
+            if(start <= i && i <= end)
+            {
+                System.out.println(s+"\t"+i);
+            }
+        }      
+        System.out.println(" ");
+        
+    }
+    
+    public void tester()
+    {
         FileResource fr = new FileResource();
         String dna = fr.asString();
-        //dna = dna.toUpperCase();
-        //buildCodonMap(1, dna);
-        //buildCodonMap(0, dna);
-        counts.clear();
-        //buildCodonMap(2, dna); //39
-        buildCodonMap(2, dna); //34
-        //buildCodonMap(0, dna); //36
-        printCodonCounts(1,50); 
-        System.out.println("Most Common Codon : " + getMostCommonCodon());
+        dna = dna.trim();
+        
+        buildCodonMap(frame, dna);
+        printCodonCounts(start, end);
+        frame++;
+        
+        buildCodonMap(frame, dna);
+        printCodonCounts(start, end);
+        frame++;
+        
+        buildCodonMap(0, dna);
+        printCodonCounts(start, end);
+        frame = 0;
     }
+
 }
