@@ -60,4 +60,31 @@ public class Tester
         //System.out.println("Number of unique IPs in the range 200 and 299 " +count1);
         System.out.println("Number of unique IPs in the range 300 and 399 " +count2);
     }
+    
+    public void testCountVisitsPerIP() {
+        LogAnalyzer la = new LogAnalyzer();
+        la.readFile("short-test_log");
+        HashMap<String, Integer> counts = la.countVisitsPerIP();
+        System.out.println("Number of visits per IP " +counts);
+    }
+    
+    public void testMostNumberVisitsByIP() {
+        LogAnalyzer la = new LogAnalyzer();
+        la.readFile("weblog3-short_log");
+        HashMap<String, Integer> counts = la.countVisitsPerIP();
+        int count = la.mostNumberVisitsByIP(counts);
+        System.out.println("Most number of visits by an IP " +count);
+    }
+    
+     public void iPsMostVisits() {
+        LogAnalyzer la = new LogAnalyzer();
+        la.readFile("weblog3-short_log");
+        HashMap<String, Integer> counts = la.countVisitsPerIP();
+        ArrayList<String> ipAddresses = la.iPsMostVisits(counts);
+        int count = ipAddresses.size();
+        System.out.println("Most visit ips "+count);
+        for (String ip : ipAddresses) {
+            System.out.println(ip);
+        }
+    }
 }
