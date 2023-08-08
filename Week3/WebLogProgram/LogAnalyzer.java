@@ -136,17 +136,41 @@ public class LogAnalyzer
         return dayOfIPs;
     }
     
-    public String dayWithMostIPVisits(HashMap<String, ArrayList<String>> daysForIp) {
+    public String dayWithMostIPVisits(HashMap<String, ArrayList<String>> daysForIps) {
         String maxIpsDay = "";
         int maxCountIps = Integer.MIN_VALUE;
-        for (String day : daysForIp.keySet()) {
-            int currDayIpCount = daysForIp.get(day).size();
+        for (String day : daysForIps.keySet()) {
+            int currDayIpCount = daysForIps.get(day).size();
             if (currDayIpCount > maxCountIps) {
                 maxIpsDay = day;
                 maxCountIps = currDayIpCount;
             }
         }
         return maxIpsDay; 
+    }
+    
+    public ArrayList<String> iPsWithMostVisitsOnDay(HashMap<String, ArrayList<String>>
+                                    daysForIps, String day) {
+        ArrayList<String> result = new ArrayList<>();                               
+        ArrayList<String> ipsOnADay = new ArrayList<>();
+        ipsOnADay = daysForIps.get(day);
+        int maxCountIPs = Integer.MIN_VALUE;
+        // map of string representing ip address with their count
+        HashMap<String, Integer> ipCount = new HashMap<>();
+        for (String ip : ipsOnADay) {
+            ipCount.put(ip, ipCount.getOrDefault(ip, 0) + 1);
+        }
+        // get the most visited ip count  by calling mostNumberVisitsByIP() method
+        int mostVisitedIPCount = mostNumberVisitsByIP(ipCount);
+        
+        // now iterate over each ips on the map to find which ips 
+        // matches with the maxIPVisitesCount
+        for (String ip : ipCount.keySet()) {
+            if (ipCount.get(ip) == mostVisitedIPCount) {
+                result.add(ip);
+            }
+        }
+        return result;                              
     }
         
      public void printAll() {
