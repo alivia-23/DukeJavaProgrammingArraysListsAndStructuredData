@@ -87,4 +87,13 @@ public class Tester
             System.out.println(ip);
         }
     }
+    
+    public void testIPsForDays() {
+        LogAnalyzer la = new LogAnalyzer();
+        la.readFile("weblog3-short_log");
+        HashMap<String, ArrayList<String>> dayForIps = la.iPsForDays();
+        for (String day : dayForIps.keySet()) {
+            System.out.println(day + " ==> " + dayForIps.get(day));
+        }
+    }
 }
