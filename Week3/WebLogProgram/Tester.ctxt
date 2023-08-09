@@ -23,5 +23,5 @@ comment7.target=void\ testCountVisitsPerIP()
 comment8.params=
 comment8.target=void\ testMostNumberVisitsByIP()
 comment9.params=
-comment9.target=void\ iPsMostVisits()
+comment9.target=void\ testIPsMostVisits()
 numComments=13
