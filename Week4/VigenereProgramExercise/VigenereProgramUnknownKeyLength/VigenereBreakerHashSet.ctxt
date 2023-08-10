@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=VigenereBreakerHashSet
+comment1.params=message\ whichSlice\ totalSlices
+comment1.target=java.lang.String\ sliceString(java.lang.String,\ int,\ int)
+comment1.text=\n\ Returns\ a\ String\ consisting\ of\ every\ totalSlices-th\ character\ from\ message,\ \n\ starting\ at\ the\ whichSlice-th\ character.\n\ @parameter\ message\ -\ a\ String\ representing\ the\ encrypted\ message\n\ @parameter\ whichSlice\ -\ an\ int\ indicating\ the\ index\ the\ slice\ should\ start\ from\n\ @parameter\ totalSlices\ -\ an\ int\ indicating\ the\ length\ of\ the\ key\n
+comment2.params=
+comment2.target=void\ testSliceString()
+comment3.params=encrypted\ len\ mostCommon
+comment3.target=int[]\ tryKeyLength(java.lang.String,\ int,\ char)
+comment4.params=
+comment4.target=void\ testTryKeyLength()
+comment5.params=
+comment5.target=void\ breakVigenere()
+comment5.text=\n\ Put\ everything\ together,\ so\ that\ you\ can\ create\ a\ new\ VigenereBreaker\ in\ BlueJ,\ \n\ call\ this\ method\ on\ it,\ and\ crack\ the\ cipher\ used\ on\ a\ message.\n
+comment6.params=fr
+comment6.target=java.util.HashSet\ readDictionary(edu.duke.FileResource)
+comment7.params=message\ dictionary
+comment7.target=int\ countWords(java.lang.String,\ java.util.HashSet)
+comment8.params=encrypted\ dictionary
+comment8.target=java.lang.String\ breakForLanguage(java.lang.String,\ java.util.HashSet)
+numComments=9
